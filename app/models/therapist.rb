@@ -1,14 +1,28 @@
 class Therapist < ApplicationRecord
-  belongs_to :language
-  belongs_to :modality
-  belongs_to :proposal
-  belongs_to :specialized_issue
-  belongs_to :faith
-  belongs_to :alliance
-  belongs_to :address
-  belongs_to :contact_info
-  belongs_to :credential
-  belongs_to :payment_option
-  belongs_to :license
-  belongs_to :report
+  belongs_to :user
+  belongs_to :faith, optional: true
+  belongs_to :alliance, optional: true
+  has_many :language
+  has_many :modality
+  has_many :proposal
+  has_many :specialized_issue
+  has_many :address
+  has_many :contact_info
+  has_many :credential
+  has_many :payment_option
+  has_many :license
+  has_many :report
+
+  accepts_nested_attributes_for :language
+  accepts_nested_attributes_for :modality
+  accepts_nested_attributes_for :proposal
+  accepts_nested_attributes_for :specialized_issue
+  accepts_nested_attributes_for :faith
+  accepts_nested_attributes_for :alliance
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :contact_info
+  accepts_nested_attributes_for :credential
+  accepts_nested_attributes_for :payment_option
+  accepts_nested_attributes_for :license
+ 
 end

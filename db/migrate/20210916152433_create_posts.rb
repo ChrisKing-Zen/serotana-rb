@@ -12,8 +12,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.boolean :active
       t.boolean :acquired_here
       t.boolean :anonymize
-      t.date :anonmyization_date
-
+      t.date :anonymization_date
+      t.references :client, null: false, foreign_key: true
       t.timestamps
     end
   end

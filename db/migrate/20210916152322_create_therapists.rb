@@ -13,7 +13,9 @@ class CreateTherapists < ActiveRecord::Migration[6.1]
       t.string :setting_preference
       t.boolean :show_age
       t.integer :onboarding_step
+      t.references :user, null: false, foreign_key: true
       t.timestamps
     end
+
   end
 end
