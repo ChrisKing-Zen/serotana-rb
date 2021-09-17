@@ -122,17 +122,10 @@ issuesArray = [
   "Burnout",
   "POC Issues",
 ]
-
-
-
-
-
-therapist_users = User.all[0...4]
-client_users = User.all[5...9]
-
 # take from seeds in blitz and ctrl+d the shit out of things
 
-
+puts "Seeding DB"
+puts "Making Clients & Proposals"
 5.times do 
   user = User.create!(
       email: Faker::Internet.email,
@@ -182,6 +175,7 @@ client_users = User.all[5...9]
   )
 end
 
+puts "Making Therapists"
 5.times do |i|
   user = User.create!(
     email: Faker::Internet.email,
@@ -243,3 +237,15 @@ end
     ]
   )
 end
+
+puts "Making Proposals"
+  Therapist.all.each do |therapist|
+    Post.all.each do |post|
+      Proposal.create!(
+        message: Faker::Lorem.sentences(number: 3),
+        therapist_id: therapist.id,
+        post_id: post.id,
+      )
+    end
+  end
+puts "finished seeding"

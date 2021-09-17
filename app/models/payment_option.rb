@@ -1,4 +1,4 @@
 class PaymentOption < ApplicationRecord
   belongs_to :therapist
-  belongs_to :payment_method
+  has_many :payment_method, dependent: :destroy
 end

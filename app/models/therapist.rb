@@ -1,28 +1,31 @@
 class Therapist < ApplicationRecord
   belongs_to :user
   belongs_to :faith, optional: true
-  belongs_to :alliance, optional: true
-  has_many :language
-  has_many :modality
-  has_many :proposal
-  has_many :specialized_issue
-  has_many :address
-  has_many :contact_info
-  has_many :credential
-  has_many :payment_option
-  has_many :license
-  has_many :report
+  belongs_to :alliances, optional: true
+  belongs_to :user
+  has_one :faith
+  has_many :alliances
+  has_many :languages
+  has_many :modalities
+  has_many :proposals, dependent: :destroy
+  has_many :specialized_issues
+  has_many :addresses, dependent: :destroy
+  has_many :contact_infos, dependent: :destroy
+  has_many :credentials, dependent: :destroy
+  has_many :payment_options, dependent: :destroy
+  has_many :licenses, dependent: :destroy
+  has_many :reports
 
-  accepts_nested_attributes_for :language
-  accepts_nested_attributes_for :modality
-  accepts_nested_attributes_for :proposal
-  accepts_nested_attributes_for :specialized_issue
+  accepts_nested_attributes_for :languages
+  accepts_nested_attributes_for :modalities
+  accepts_nested_attributes_for :proposals
+  accepts_nested_attributes_for :specialized_issues
   accepts_nested_attributes_for :faith
-  accepts_nested_attributes_for :alliance
-  accepts_nested_attributes_for :address
-  accepts_nested_attributes_for :contact_info
-  accepts_nested_attributes_for :credential
-  accepts_nested_attributes_for :payment_option
-  accepts_nested_attributes_for :license
+  accepts_nested_attributes_for :alliances
+  accepts_nested_attributes_for :addresses
+  accepts_nested_attributes_for :contact_infos
+  accepts_nested_attributes_for :credentials
+  accepts_nested_attributes_for :payment_options
+  accepts_nested_attributes_for :licenses
  
 end
