@@ -2,7 +2,7 @@ class Therapist < ApplicationRecord
   belongs_to :user
   belongs_to :reports
   has_one :faith
-  has_many :alliances, optional: true
+  has_many :alliances
   has_many :languages
   has_many :modalities
   has_many :proposals, dependent: :destroy

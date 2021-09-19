@@ -199,13 +199,13 @@ puts "Making Therapists"
     show_age: Faker::Boolean.boolean,
     onboarding_step: 0,
     languages_attributes: {
-      name: languageArray[Faker::Number.within( range: 0..languageArray.length)] 
+      name: languageArray[0] 
     },
     modalities_attributes: {
-      name: modalitiesArray[Faker::Number.within( range: 0..modalitiesArray.length)] 
+      name: modalitiesArray[0] 
     },
     specialized_issues_attributes: {
-      name: issuesArray[Faker::Number.within( range: 0..issuesArray.length)]
+      name: issuesArray[0]
     },
     addresses_attributes: {
       street: Faker::Address.street_address,
