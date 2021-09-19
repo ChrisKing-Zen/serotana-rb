@@ -1,11 +1,8 @@
 class Therapist < ApplicationRecord
   belongs_to :user
-  belongs_to :faith, optional: true
-  belongs_to :alliances, optional: true
-  belongs_to :user
   belongs_to :reports
   has_one :faith
-  has_many :alliances
+  has_many :alliances, optional: true
   has_many :languages
   has_many :modalities
   has_many :proposals, dependent: :destroy
