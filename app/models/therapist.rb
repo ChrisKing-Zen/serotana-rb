@@ -3,6 +3,7 @@ class Therapist < ApplicationRecord
   belongs_to :faith, optional: true
   belongs_to :alliances, optional: true
   belongs_to :user
+  belongs_to :reports
   has_one :faith
   has_many :alliances
   has_many :languages
@@ -14,7 +15,7 @@ class Therapist < ApplicationRecord
   has_many :credentials, dependent: :destroy
   has_many :payment_options, dependent: :destroy
   has_many :licenses, dependent: :destroy
-  has_many :reports
+  has_many :insurances, dependent: :destroy
 
   accepts_nested_attributes_for :languages
   accepts_nested_attributes_for :modalities
@@ -27,5 +28,6 @@ class Therapist < ApplicationRecord
   accepts_nested_attributes_for :credentials
   accepts_nested_attributes_for :payment_options
   accepts_nested_attributes_for :licenses
+  accepts_nested_attributes_for :insurances
  
 end

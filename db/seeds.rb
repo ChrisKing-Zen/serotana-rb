@@ -133,7 +133,6 @@ puts "Making Clients & Proposals"
       verified: Faker::Boolean.boolean,
       anonymized: Faker::Boolean.boolean,
     )
-
   client = Client.create!(
     onboarding_step: Faker::Boolean.boolean ? 0 : 1,
     user: user,
@@ -176,15 +175,16 @@ puts "Making Clients & Proposals"
 end
 
 puts "Making Therapists"
+
 5.times do |i|
   user = User.create!(
     email: Faker::Internet.email,
     role: "therapist",
     verified: Faker::Boolean.boolean,
-    anonymized: Faker::Boolean.boolean,
-    )
+    anonymized: Faker::Boolean.boolean
+  )
 
- therapist = Therapist.create!(
+  Therapist.create!(
     user_id: user.id,
     firstName: Faker::Name.first_name,
     lastName: Faker::Name.last_name,
@@ -198,41 +198,31 @@ puts "Making Therapists"
     setting_preference: Faker::Boolean.boolean ? "online" : "in-person",
     show_age: Faker::Boolean.boolean,
     onboarding_step: 0,
-  )
-
-  Language.create!(
-    name: languageArray[Faker::Number.within( range: 0..languageArray.length)], 
-    therapist_id: therapist.id
-    )
-  Modality.create!(
-    name: modalitiesArray[Faker::Number.within( range: 0..modalitiesArray.length)], 
-    therapist_id: therapist.id
-    )
-  SpecializedIssue.create!(
-    name: issuesArray[Faker::Number.within( range: 0..issuesArray.length)], 
-    therapist_id: therapist.id
-  )
-  Address.create!(  
+    languages_attributes: {
+      name: languageArray[Faker::Number.within( range: 0..languageArray.length)] 
+    },
+    modalities_attributes: {
+      name: modalitiesArray[Faker::Number.within( range: 0..modalitiesArray.length)] 
+    },
+    specialized_issues_attributes: {
+      name: issuesArray[Faker::Number.within( range: 0..issuesArray.length)]
+    },
+    addresses_attributes: {
       street: Faker::Address.street_address,
       city: Faker::Address.city,
       state: Faker::Address.state,
-      postal_code: Faker::Address.zip,
-      therapist_id: therapist.id 
-      )
-
-  Insurance.create!(
-    [
-      {
+      postal_code: Faker::Address.zip
+    },
+    insurances_attributes: [
+      { 
         name: Faker::Lorem.word,
         state: Faker::Address.state,
-        country: Faker::Address.country,
-        therapist_id: therapist.id
+        country: Faker::Address.country
       },
       {
         name: Faker::Lorem.word,
         state: Faker::Address.state,
-        country: Faker::Address.country,
-        therapist_id: therapist.id
+        country: Faker::Address.country
       }
     ]
   )
