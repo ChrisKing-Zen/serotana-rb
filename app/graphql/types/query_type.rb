@@ -7,35 +7,46 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-   
     field :posts,
-      [Types::PostType],
-      null: false,
-      description: "Returns a list of posts"
+          [Types::PostType],
+          null: false,
+          description: 'Returns a list of posts'
 
     field :proposals,
-      [Types::ProposalType],
-      null: false,
-      description: "Returns a list of proposals"
+          [Types::ProposalType],
+          null: false,
+          description: 'Returns a list of proposals'
 
     field :therapists,
-      [Types::TherapistType],
-      null: false,
-      description: "Returns a list of therapists"
+          [Types::TherapistType],
+          null: false,
+          description: 'Returns a list of therapists'
 
-    field :post, Types::PostType, null: false, description: "Returns a post" do
+    field :post, Types::PostType, null: false, description: 'Returns a post' do
       argument :id, Integer, required: true
     end
-    field :post_proposals, [Types::ProposalType], null: false, description: "Returns proposals from post" do
+    field :post_proposals,
+          [Types::ProposalType],
+          null: false,
+          description: 'Returns proposals from post' do
       argument :post_id, Integer, required: true
     end
-    field :therapist_proposals, [Types::ProposalType], null: false, description: "Returns proposals from therapist" do
+    field :therapist_proposals,
+          [Types::ProposalType],
+          null: false,
+          description: 'Returns proposals from therapist' do
       argument :therapist_id, Integer, required: true
     end
-    field :therapist, Types::TherapistType, null: false, description: "Returns a therapist" do
+    field :therapist,
+          Types::TherapistType,
+          null: false,
+          description: 'Returns a therapist' do
       argument :id, Integer, required: true
     end
-    field :proposal, Types::ProposalType, null: false, description: "Returns a proposal" do
+    field :proposal,
+          Types::ProposalType,
+          null: false,
+          description: 'Returns a proposal' do
       argument :id, Integer, required: true
     end
 
@@ -66,6 +77,5 @@ module Types
     def proposal(id:)
       Proposal.find(id)
     end
-    
   end
 end

@@ -6,7 +6,6 @@ class CreatePaymentOptions < ActiveRecord::Migration[6.1]
       t.string :category
       t.boolean :sliding_scale
       t.references :therapist, null: false, foreign_key: true
-      
 
       t.timestamps
     end

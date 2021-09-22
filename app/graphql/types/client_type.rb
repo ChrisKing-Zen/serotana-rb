@@ -19,12 +19,9 @@ module Types
       age = (diff / 365.25).floor
       age.to_s
     end
-  
+
     def city_state
       "#{object.city} #{object.state}"
     end
   end
-
-  
-
 end
