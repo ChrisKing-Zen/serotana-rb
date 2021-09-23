@@ -13,7 +13,7 @@ module Types
     field :acquired_here, Boolean, null: true
     field :anonymize, Boolean, null: true
     field :anonymization_date, GraphQL::Types::ISO8601Date, null: true
-    field :client, Types::ClientType, null: false
+    field :client, Types::ClientType, null: false, authorized_scope: true
     field :proposals, [Types::ProposalType], null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false

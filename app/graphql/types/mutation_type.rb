@@ -1,5 +1,7 @@
 module Types
   class MutationType < Types::BaseObject
+    include ActionPolicy::GraphQL::Behaviour
+
     # TODO: remove me
     field :test_field,
           String,

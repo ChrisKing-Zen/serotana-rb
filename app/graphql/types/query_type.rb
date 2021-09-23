@@ -15,7 +15,8 @@ module Types
     field :proposals,
           [Types::ProposalType],
           null: false,
-          description: 'Returns a list of proposals'
+          description: 'Returns a list of proposals',
+          authorize: true
 
     field :therapists,
           [Types::TherapistType],
@@ -28,13 +29,15 @@ module Types
     field :post_proposals,
           [Types::ProposalType],
           null: false,
-          description: 'Returns proposals from post' do
+          description: 'Returns proposals from post',
+          authorize: true do
       argument :post_id, Integer, required: true
     end
     field :therapist_proposals,
           [Types::ProposalType],
           null: false,
-          description: 'Returns proposals from therapist' do
+          description: 'Returns proposals from therapist',
+          authorize: true do
       argument :therapist_id, Integer, required: true
     end
     field :therapist,
@@ -46,7 +49,8 @@ module Types
     field :proposal,
           Types::ProposalType,
           null: false,
-          description: 'Returns a proposal' do
+          description: 'Returns a proposal',
+          authorize: true do
       argument :id, Integer, required: true
     end
 

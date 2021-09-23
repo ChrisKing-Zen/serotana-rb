@@ -1,5 +1,6 @@
 module Types
   class ProposalType < Types::BaseObject
+    expose_authorization_rules :edit?, :destroy?
     field :id, ID, null: false
     field :message, String, null: true
     field :status, String, null: true

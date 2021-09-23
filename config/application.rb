@@ -33,6 +33,9 @@ module Serotana
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+    # config.eager_load = true
+    # config.cache_classes = true
+    config.autoload_paths += Dir[Rails.root.join('app', 'policies', '*.rb')]
     config.generators.system_tests = nil
     config.generators do |g|
       g.test_framework false

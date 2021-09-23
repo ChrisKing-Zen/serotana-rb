@@ -12,7 +12,7 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :age, String, null: false, method: :age
-    field :post, Types::PostType, null: false
+    field :post, Types::PostType, null: false, authorized_scope: true
 
     def age
       diff = Date.today - object.birth_date
